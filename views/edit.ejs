@@ -1,0 +1,44 @@
+<%- include('./partials/header')-%>
+           
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+               
+                <form method="POST" action="/create" >
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Modele</label>
+                      <input type="text" class="form-control" value="" name="name" > 
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Constructeur</label>
+                      <select class="form-control" name="factory" >
+
+                        <% factories.forEach(function(factory) {%>
+                            <option value="<%=factory.id%>"> <%=factory.name%></option>
+                          <%});%>
+                    
+                      </select>
+                    </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Energy</label>
+                  <select class="form-control" name="energy" >
+                      
+                    <% energies.forEach(function(energy) {%>
+                        <option value="<%=energy.id%>"> <%=energy.name%></option>
+                      <%});%>
+                
+                    
+                  </select>
+                </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  
+            </div>
+        </div>
+    </div>
+
+<%- include('./partials/footer')-%>

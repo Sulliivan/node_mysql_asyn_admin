@@ -1,0 +1,26 @@
+{
+  "name": "node_mysql_asyn_admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sulliivan/node_mysql_asyn_admin.git"
+  },
+  "author": "sullivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sulliivan/node_mysql_asyn_admin/issues"
+  },
+  "homepage": "https://github.com/Sulliivan/node_mysql_asyn_admin#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mysql": "^2.18.1"
+  }
+}

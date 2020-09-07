@@ -1,0 +1,44 @@
+<%- include('./partials/header')-%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Liste des constructeurs</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% factories.forEach(function(factory) {%>
+                  <tr>
+                    <th scope="row"><%= factory.id%></th>
+                    <td><%= factory.name%></td>
+                  </tr>
+                <%});%>
+                </tbody>
+              </table>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% energies.forEach(function(energy) {%>
+                  <tr>
+                    <th scope="row"><%= energy.id%></th>
+                    <td><%= energy.name%></td>
+                  </tr>
+                <%});%>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer')-%>
