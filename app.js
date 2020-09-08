@@ -63,10 +63,9 @@ app.get("/", async (req, res) => {
     try{
         const factories = await query("SELECT * FROM factories")
         const energies = await query("SELECT * FROM energies")
-    
         res.render("index", {
             factories,
-            energies
+            energies,
         });
 
     }catch (err){
@@ -87,7 +86,6 @@ app.get("/create", async (req, res) => {
     });
 });
 
-
 //Methode POST pour creer une nouvelle fiche
 app.post("/create", (req, res) => {
     if (!req.files){
@@ -105,21 +103,56 @@ app.post("/create", (req, res) => {
             try {
                   await query('insert into cars (name, image) values (?,?);',[name, image]); 
                   res.redirect("/")
-               // res.send('File uploaded!');
               }catch (err){
                   res.send(err)
               }
+            }  
+            );
+        }
+});
 
+////////////////////////////
+app.get("/carrousel", async (req, res) => {
+    try{
+       const carrousel = await query("SELECT * FROM carrousel")
+        res.render("carrousel", {
+            carrousel
+        });
+    }catch (err){
+        res.send(err)
+    }
+})
+
+////////////////////////////
+app.post("/carrousel", (req, res) => {
+    if (!req.files){
+        return res.status(400).send('no files were upload');
+    }
+    let imageUpload = req.files.image
+    let image = `image/${imageUpload.name}`
+
+    if (imageUpload.mimetype === "image/jpeg" || imageUpload.mimetype === "image/jpg" || imageUpload.mimetype === "image/gif" || imageUpload.mimetype === "image/png") {
+        imageUpload.mv(`public/image/${imageUpload.name}`, async function(err) {
+            if (err){
+              return res.status(500).send(err);
+            }
+            try {
+                  await query('INSERT INTO carrousel (image) values (?);',[image]); 
+                  res.render("carrousel")
+              }catch (err){
+                  res.send(err)
+              }
             }  
             );
         } else {
            message = "fichier invalide"
-           res.render('edit',{message})
+           res.render('carrousel',{message})
        }
-        // console.log(imageUpload);
-       // await query('INSERT INTO cars (name, factoryId, energyId) value(?, ?, ?)', [name, factory, energy]);
-            //res.send('ok')
-});
+    
+})
+
+
+
 
 
 ///////////////////////////////////////////
