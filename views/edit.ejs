@@ -1,44 +1,39 @@
 <%- include('./partials/header')-%>
-           
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-               
-                <form method="POST" action="/create" >
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Modele</label>
-                      <input type="text" class="form-control" value="" name="name" > 
-                    </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-                    <div class="form-group">
-                      <label for="exampleFormControlSelect1">Constructeur</label>
-                      <select class="form-control" name="factory" >
-
-                        <% factories.forEach(function(factory) {%>
-                            <option value="<%=factory.id%>"> <%=factory.name%></option>
-                          <%});%>
-                    
-                      </select>
-                    </div>
-
+            <form method="POST" action="/create" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1">Energy</label>
-                  <select class="form-control" name="energy" >
-                      
-                    <% energies.forEach(function(energy) {%>
-                        <option value="<%=energy.id%>"> <%=energy.name%></option>
-                      <%});%>
-                
-                    
-                  </select>
+                    <label for="exampleFormControlInput1">Modele</label>
+                    <input type="text" class="form-control" value="" name="name">
                 </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                  
-            </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">constructeur</label>
+                    <input type="text" class="form-control" value="" name="factory">
+                </div>
+
+            
+                <div class="form-group">
+                        <label for="exampleFormControlInput1">energy</label>
+                        <input type="text" class="form-control" value="" name="energy">
+                </div>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Example file input</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image"> 
+                  </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
         </div>
     </div>
+</div>
 
 <%- include('./partials/footer')-%>
